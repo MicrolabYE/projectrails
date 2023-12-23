@@ -10,11 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_20_105401) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_22_172623) do
   create_table "messages", force: :cascade do |t|
     t.string "contacts_name"
     t.string "contacts_email"
     t.text "contacts_message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "myusers", force: :cascade do |t|
+    t.string "name"
+    t.string "mail"
+    t.string "password"
+    t.string "urls"
+    t.string "settings"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "test1s", force: :cascade do |t|
+    t.integer "key"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "test2s", force: :cascade do |t|
+    t.integer "belongs_to"
+    t.json "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tests", force: :cascade do |t|
+    t.json "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

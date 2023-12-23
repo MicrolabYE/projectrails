@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
   get 'compute/add_message'
+  get 'compute/add_user'
+  get 'compute/check_user'
+  get 'compute/add_session'
+  get 'compute/delete_url'
+  get 'compute/add_url'
+  get 'compute/check_url'
+  get 'compute/get_info'
+  get 'compute/change_counter'
+  get 'compute/get_info_about_urls'
   devise_for :users
   get 'main/main_page'
   get 'main/registration'

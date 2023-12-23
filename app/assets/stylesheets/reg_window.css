@@ -3,7 +3,7 @@
   }
 
   /* Center both forms */
-  form {
+  #log-in {
     color:#708090;
     cursor: pointer;
     display: flex;

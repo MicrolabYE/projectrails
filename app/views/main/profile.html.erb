@@ -1,2 +1,173 @@
-<h1>Main#profile</h1>
-<p>Find me in app/views/main/profile.html.erb</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
+
+    <%= stylesheet_link_tag "main_page.css" %>
+    <%= stylesheet_link_tag "profile.css" %>
+    <%= stylesheet_link_tag "log.css" %>
+    <%= stylesheet_link_tag "reg_window.css" %>
+    <%= stylesheet_link_tag "popup.css" %>
+
+    <script>
+        set_access = async () => {
+            alert("test")
+            seconds_input = document.getElementById("seconds").setAttribute("readonly", false);
+            if (document.getElementById("blocktype").value == "inf"){
+                document.getElementById("div_seconds").style.display = "none"
+            } else {
+                document.getElementById("div_seconds").style.display = "block"
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <img src="http://127.0.0.1:3000/logo.png" alt="logo" class="img-logo" >
+
+                <div class="nav">
+                    <ul class="nav-content">
+                    <li>
+                        <a class="nav-link" href="/main/main_page">Домой</a></li>
+                    <li>
+                        <a class="nav-link" href="/main/registration">Регистрация / Вход</a></li>
+                    <li>
+                        <a class="nav-link" href="/main/profile">Личный кабинет</a></li>
+                    <li>
+                        <a class="nav-link" onclick="showPopup()">О нас</a></li>
+
+                    <li>
+                        <li>
+                        <a class="nav-link nav-link-contact" href="/main/main_page#contact-us">Связаться с нами</a></li>
+
+
+                    </ul>
+                </div>
+
+
+            </div>
+
+        </div>
+    </header>
+<main>
+<% if @current_user != nil %>
+<div class="prof-form">
+    <div class="zag">Ваш профиль</div>
+        <div class="prof-cont">
+            <img class="profile-logo"  src="http://127.0.0.1:3000/profile-logo.png" alt="prof-logo" >
+            <div class="prof-txt">
+            <li1 id = "username"> Логин: <%= @name %> </li>
+            <br>
+            <li2 id = "usermail"> Почта: <%= @mail %> </li>
+            </div>
+        </div>
+</div>
+<br>
+<div class="statistic-form">
+    СПИСОК ОГРАНИЧЕННЫХ САЙТОВ
+<% 0.upto(@urls.length - 1) do |i| %>
+    <div class="position" id = <%= "deletediv" + i.to_s %>>
+        <div class="way" id = <%= "deleteurl" + i.to_s %> >Источник: <%= @urls[i] %></div>
+        <div class="time">Количество заходов:<%= @settings[i].split('%')[4] %></div> <button class="delete" onclick= <%= "delete_url(" + i.to_s + ")" %>>
+            <i class="trash">⌫</i>
+        </button> </div>
+<% end %>
+</div>
+<br><br>
+<div class="monitoring-form">
+        МОНИТОРИНГ
+        <div class="position-monitoring">
+            <input placeholder="URL" type="text" class="url" id = "inputurl">
+
+        </div>
+
+    <div class="position-monitoring">
+        <div class="way">Тип блокировки:
+            <select name="cars" id = "blocktype">
+                <option value="timer">Временная</option>
+                <option value="inf">Навсегда</option>
+
+            </select>
+        </div>
+
+
+    </div>
+    <div class="position-monitoring">
+        <div class="way" id = "div_seconds">Время обратного отсчета:
+            <input type="number" id="seconds" name="seconds" pattern="\d*" placeholder="Введите число в секундах">
+        </div>
+
+
+    </div>
+    <div class="position-monitoring">
+        <div class="way">Время блокировки:С
+            <input type="time" id="start-block-time" name="start-block-time" required>
+            до
+            <input type="time" id="end-block-time" name="end-block-time" required>
+        </div>
+
+
+    </div>
+
+    <div class="position-monitoring"></div>
+    <div class="contacts-btn" id="add-url" onclick = "add_url()">Добавить</div>
+    <br>
+    <div class="contacts-btn" href = "" id="download-button" onclick = "download_script()">Скачать скрипт</div>
+    <a display: none download="script.js" href = "#" id="downloading_href">Скачать скрипт</a>
+</div>
+<div class="alike-footer">
+    <div class="alike-footer-content">
+        <a href="#" onclick="showPopup1()">
+            <img class="i-l" src="http://127.0.0.1:3000/instruction-logo.jpg" alt="instr-logo">
+        </a>
+    </div>
+</div>
+
+<% else %>
+    <h1> Зарегестрирутйесь или войдите в аккаунт, чтобы получить доступ к личному кабинету </h1>
+<% end %>
+
+</main>
+<div id="popup" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="closePopup()">&times;</span>
+      <img class="logo-pop"   src="http://127.0.0.1:3000/logo.png" alt="logo">
+      <p>Добро пожаловать на ODYSSEUS – платформу, созданную для тех, кто ценит свое время и стремится сделать его использование более осознанным и продуктивным. Наша миссия - помочь вам эффективно управлять временем, освободившись от лишних отвлечений в социальных сетях и на других ненужных сайтах.
+
+        <div class="slog">СОХРАНИТЬ ВАШЕ ВРЕМЯ - НАША ГЛАВНАЯ ЗАДАЧА.</div>
+
+        Как это работает?
+
+        ODYSSEUS предоставляет вам уникальные инструменты для мониторинга вашей активности в социальных сетях. Мы анализируем ваше время, проведенное в сети, чтобы предоставить вам ценную обратную связь о том, как вы расходуете свои ресурсы. Наша система также способна ограничивать доступ к сайтам, которые могут отвлекать вас и замедлять ваш прогресс.
+
+        Полезные направления-
+
+        ODYSSEUS не только помогает вам контролировать нежелательные привычки, но и направляет вас на полезные ресурсы. Вы можете настроить перенаправление с одних сайтов на другие, обогащая свой опыт обучения, карьерного роста или личного развития.
+
+        Конфиденциальность и Безопасность
+
+        Мы ценим вашу конфиденциальность. Все данные обрабатываются анонимно, и вы имеете полный контроль над тем, какие данные вы хотите с нами делиться. Наша цель - помочь вам, не вмешиваясь в вашу личную жизнь.
+
+        Присоединитесь к ODYSSEUS и начните свой путь к эффективному управлению временем. Давайте вместе сэкономим каждую минуту на благо вашего личного и профессионального развития. Ваше время - ваш ресурс, и ODYSSEUS поможет вам использовать его наилучшим образом.</p>
+    </div>
+  </div>
+  <div id="popup1" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="closePopup1()">&times;</span>
+      <img class="logo-pop"   src="http://127.0.0.1:3000/logo.png" alt="logo">
+      <p>Здесь будет твоя инструкция</p>
+    </div>
+  </div>
+  <script src="http://127.0.0.1:3000/popup.js"></script>
+
+
+
+</body>
+</html>

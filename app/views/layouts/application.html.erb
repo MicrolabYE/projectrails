@@ -1,52 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
-
-    <%= stylesheet_link_tag "main_page.css" %>
     <%= stylesheet_link_tag "default.css" %>
     <script src="http://127.0.0.1:3000/main.js"></script>
     <title>ODYSSEUS</title>
     </head>
 <body>
   <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <img src="http://127.0.0.1:3000/logo.png" alt="logo" class="img-logo" >
-
-                <div class="nav">
-                    <ul class="nav-content">
-                        <li>
-                            <a class="nav-link" href="/main/main_page">Домой</a></li>
-                        <li>
-                            <a class="nav-link" href="/main/registration">Регистрация</a></li>
-                        <li>
-                            <a class="nav-link" href="/main/profile">Личный кабинет</a></li>
-                        <li>
-                            <a class="nav-link" href="/main/about_us">О нас</a></li>
-                        <li>
-                        <li>
-                            <a class="nav-link nav-link-contact" href="#">Связаться с нами</a></li>
-
-
-                    </ul>
-                </div>
-
-
-            </div>
-
-        </div>
-    </header>
     <%= yield %>
-    <footer class="footer">
-      <div class="footer-wrapper">
-      <div class="footer-text">ODYSSEUS © 2023. All Rights Reserved </div>
-      </div>
-    </footer>
   </body>
 </html>

@@ -1,41 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-    <main>
-        <div class="gallery">
-            <div class="gallery-content">
-                <div class="gallery-image"></div>
-                <div class="gallery-text">Сохранить ваше время-наша главная задача</div>
-                <div class="gallery-text-inf">Пакт "Одиссея" - это цифровой контракт, заложенный в основе пользовательского соглашения на платформе ODYSSEUS. Этот пакт обозначает взаимное обязательство между пользователями и платформой для совместного стремления к оптимизации использования времени в онлайн-пространстве.
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
 
-                    В соответствии с пактом "Одиссея", пользователи обязуются активно участвовать в процессе мониторинга и управления своим временем, позволяя платформе анализировать их активность в социальных сетях. В ответ, ODYSSEUS обеспечивает персонализированный контроль и направление, с целью сделать виртуальный опыт более осознанным и направленным на достижение личных и профессиональных целей.
+    <%= stylesheet_link_tag "main_page.css" %>
+    <%= stylesheet_link_tag "popup.css" %>
+</head>
+<body>
 
-                    Пакт "Одиссея" также призывает к сотрудничеству в установлении ограничений для тех сайтов, которые могут отвлекать от важных задач. Путем активного взаимодействия с функционалом платформы, пользователи подписывают свой договор о более продуктивном использовании онлайн-ресурсов.
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <img src="http://127.0.0.1:3000/logo.png" alt="logo" class="img-logo" >
 
-                    Таким образом, пакт "Одиссея" становится виртуальным союзом, направленным на сохранение времени, стимулирование роста и улучшение качества цифровой жизни каждого участника.</div>
+                <div class="nav">
+                    <ul class="nav-content">
+                        <li>
+                            <a class="nav-link" href="/main/main_page">Домой</a></li>
+                        <li>
+                            <a class="nav-link" href="/main/registration">Регистрация / Вход</a></li>
+                        <li>
+                            <a class="nav-link" href="/main/profile">Личный кабинет</a></li>
+                        <li>
+                            <a class="nav-link" onclick="showPopup()">О нас</a></li>
+
+                        <li>
+                        <li>
+                            <select id="lang" name="language">
+                            <option value="rus">Русский</option>
+                            <option value="eng">Английский</option>
+                            </select>
+                            </li>
+                        <li>
+                            <a class="nav-link nav-link-contact" href="#contact-us">Связаться с нами</a></li>
+
+
+                    </ul>
+                </div>
+
+
             </div>
+
         </div>
+    </header>
+<main>
+    <div class="gallery">
+        <div class="gallery-content">
+            <div class="gallery-image"></div>
+            <div class="gallery-text">Сохранить ваше время-наша главная задача</div>
+            <div class="gallery-text-inf">Пакт "Одиссея" - это цифровой контракт, заложенный в основе пользовательского соглашения на платформе ODYSSEUS. Этот пакт обозначает взаимное обязательство между пользователями и платформой для совместного стремления к оптимизации использования времени в онлайн-пространстве.
 
-        <div class="contacts">
-            <div class="contacts-wrapper">
-                <div class="contacts-container">
-                    <div class="contacts-body">
-                        <div class="contacts-header">Что мы можем сделать для вас?</div>
-                        <div class="contacts-text">Работа с клиентами нашего сервиса очень важна для нас.Мы ответим вам как можно скорее!</div>
-                        <div class="contacts-form">
-                            <div class="contacts-info">
-                                <input placeholder="Имя" type="text" class="contacts-name" id="contacts-name">
-                                <input placeholder="Почта" type="text" class="contacts-email" id="contacts-email">
-                            </div>
-                            <textarea placeholder="Сообщение..." class="contacts-message" id="contacts-message"></textarea>
+                В соответствии с пактом "Одиссея", пользователи обязуются активно участвовать в процессе мониторинга и управления своим временем, позволяя платформе анализировать их активность в социальных сетях. В ответ, ODYSSEUS обеспечивает персонализированный контроль и направление, с целью сделать виртуальный опыт более осознанным и направленным на достижение личных и профессиональных целей.
 
+                Пакт "Одиссея" также призывает к сотрудничеству в установлении ограничений для тех сайтов, которые могут отвлекать от важных задач. Путем активного взаимодействия с функционалом платформы, пользователи подписывают свой договор о более продуктивном использовании онлайн-ресурсов.
+
+                Таким образом, пакт "Одиссея" становится виртуальным союзом, направленным на сохранение времени, стимулирование роста и улучшение качества цифровой жизни каждого участника.</div>
+        </div>
+    </div>
+
+    <div class="contacts">
+        <div class="contacts-wrapper">
+            <div class="contacts-container">
+                <div class="contacts-body">
+                    <div class="contacts-header">Что мы можем сделать для вас?</div>
+                    <div class="contacts-text">Работа с клиентами нашего сервиса очень важна для нас.Мы ответим вам как можно скорее!</div>
+                        <div id="contact-us">
+                            <div class="contacts-form">
+                                <div class="contacts-info">
+                                    <input placeholder="Имя" type="text" class="contacts-name" id = "contacts-name">
+                                    <input placeholder="Почта" type="text" class="contacts-email" id = "contacts-email">
+                                </div>
+                            <textarea placeholder="Сообщение..." class="contacts-message" id="contacts-message" ></textarea>
                         </div>
 
                     </div>
-                    <div class="contacts-btn" onclick = "send_message()">Отправить</div>
-                    <div><%= @test %></div>
-                </div>
-            </div>
 
+                </div>
+                <div class="contacts-btn" onclick = "send_message()">Отправить</div>
+            </div>
         </div>
-    </main>
+
+    </div>
+</main>
+<div id="popup" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="closePopup()">&times;</span>
+      <img class="logo-pop"   src="http://127.0.0.1:3000/logo.png" alt="logo">
+      <p>Добро пожаловать на ODYSSEUS – платформу, созданную для тех, кто ценит свое время и стремится сделать его использование более осознанным и продуктивным. Наша миссия - помочь вам эффективно управлять временем, освободившись от лишних отвлечений в социальных сетях и на других ненужных сайтах.
+
+        <div class="slog">СОХРАНИТЬ ВАШЕ ВРЕМЯ - НАША ГЛАВНАЯ ЗАДАЧА.</div>
+
+        Как это работает?
+
+        ODYSSEUS предоставляет вам уникальные инструменты для мониторинга вашей активности в социальных сетях. Мы анализируем ваше время, проведенное в сети, чтобы предоставить вам ценную обратную связь о том, как вы расходуете свои ресурсы. Наша система также способна ограничивать доступ к сайтам, которые могут отвлекать вас и замедлять ваш прогресс.
+
+        Полезные направления-
+
+        ODYSSEUS не только помогает вам контролировать нежелательные привычки, но и направляет вас на полезные ресурсы. Вы можете настроить перенаправление с одних сайтов на другие, обогащая свой опыт обучения, карьерного роста или личного развития.
+
+        Конфиденциальность и Безопасность
+
+        Мы ценим вашу конфиденциальность. Все данные обрабатываются анонимно, и вы имеете полный контроль над тем, какие данные вы хотите с нами делиться. Наша цель - помочь вам, не вмешиваясь в вашу личную жизнь.
+
+        Присоединитесь к ODYSSEUS и начните свой путь к эффективному управлению временем. Давайте вместе сэкономим каждую минуту на благо вашего личного и профессионального развития. Ваше время - ваш ресурс, и ODYSSEUS поможет вам использовать его наилучшим образом.</p>
+    </div>
+  </div>
+
+  <script src="http://127.0.0.1:3000/popup.js"></script>
+<footer class="footer">
+    <div class="footer-wrapper">
+    <div class="footer-text">ODYSSEUS © 2023. All Rights Reserved </div>
+    </div>
+</footer>
+
+</body>
 </html>

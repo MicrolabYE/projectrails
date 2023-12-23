@@ -1,9 +1,166 @@
-<% if user_signed_in? %>
-    <span>Здравствуйте, <%= current_user.email %></span>
-    <%= link_to 'Выйти', destroy_user_session_path, :method => :delete %>
-<% else %>
-    <%= link_to 'Войти', new_user_session_path %> или <%= link_to 'Зарегистрироваться', new_user_registration_path %>
-<% end %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
+
+
+    <%= stylesheet_link_tag "main_page.css" %>
+    <%= stylesheet_link_tag "log.css" %>
+    <%= stylesheet_link_tag "reg_window.css" %>
+    <%= stylesheet_link_tag "popup.css" %>
+    <%= stylesheet_link_tag "profile.css" %>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+            <img src="http://127.0.0.1:3000/logo.png" alt="logo" class="img-logo" >
+
+            <div class="nav">
+                <ul class="nav-content">
+                    <li>
+                        <a class="nav-link" href="/main/main_page">Домой</a></li>
+                    <li>
+                        <a class="nav-link" href="/main/registration">Регистрация / Вход</a></li>
+                    <li>
+                        <a class="nav-link" href="/main/profile">Личный кабинет</a></li>
+                    <li>
+                        <a class="nav-link" onclick="showPopup()">О нас</a></li>
+
+                    <li>
+                    <li>
+                        <a class="nav-link nav-link-contact" href="/main/main_page#contact-us">Связаться с нами</a></li>
+
+
+                </ul>
+            </div>
+
+
+            </div>
+
+        </div>
+    </header>
+<main>
+<% if @current_user != nil %>
+      <h1> Вы уже авторизовались. Мы рады, что вы с нами! </h1>
+<% else %>
+    <div id="log-in">
+      <div id="email-warning" style="display: none; color: red;">Введите корректный email-адрес.</div>
+        <div class="con">
+          <h1>Регистрация</h1>
+          <p>Добро  пожаловать!</p>
+          <label for="username"><b>Имя пользователя</b></label>
+          <input
+            type="text"
+            placeholder="Введите имя пользователя"
+            name="username"
+            id="username_login"
+            required
+          />
+
+          <label for="email"><b>Почта</b></label>
+          <input
+            type="text"
+            placeholder="Введите почту"
+            name="email"
+            id="email_login"
+            required
+          />
+
+          <label for="pwd"><b>Пароль</b></label>
+          <input
+            type="password"
+            placeholder="Введите пароль"
+            name="pwd"
+            id="pwd_login"
+            required
+          />
+
+
+  <br>
+          <button  class="button-reg_log" onclick = "login()">Зарегестрироваться</button>
+        </div>
+       <!-- wrapping the text inside the p tag with a tag for routing to the login page URL-->
+        <!-- the # must ideally be replaced by the login page URL -->
+        <div>
+            <p>Уже зарегистрированы? <a href="#" onclick="showSignInForm()">Войти</a>.</p>
+        </div>
+      </div>
+      <br><br><br><br>
+      <div id="sign-in" >
+        <div id="email-warning" style="display: none; color: red;">Введите корректный email-адрес.</div>
+        <div class="con">
+          <h1>Вход</h1>
+          <p>Рады видеть вас снова!</p>
+
+          <label for="email"><b>Почта</b></label>
+          <input
+            type="text"
+            placeholder="Введите почту"
+            name="email"
+            id="email_signin"
+            required
+          />
+
+          <label for="pwd"><b>Пароль</b></label>
+          <input
+            type="password"
+            placeholder="Введите пароль"
+            name="pwd"
+            id="pwd_signin"
+            required
+          />
+
+
+  <br>
+          <button class="button-reg_log" onclick = signin()>Войти</button>
+        </div>
+       <!-- wrapping the text inside the p tag with a tag for routing to the login page URL-->
+        <!-- the # must ideally be replaced by the login page URL -->
+
+      </div>
+<% end %>
+      <script>
+        function showSignInForm() {
+          // Hide the log-in form
+          document.getElementById("log-in").style.display = "none";
+          // Show the sign-in form
+          document.getElementById("sign-in").style.display = "block";
+        }
+
+      </script>
+</main>
+<div id="popup" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="closePopup()">&times;</span>
+      <img class="logo-pop"   src="http://127.0.0.1:3000/logo.png" alt="logo">
+      <p>Добро пожаловать на ODYSSEUS – платформу, созданную для тех, кто ценит свое время и стремится сделать его использование более осознанным и продуктивным. Наша миссия - помочь вам эффективно управлять временем, освободившись от лишних отвлечений в социальных сетях и на других ненужных сайтах.
+
+      <div class="slog">СОХРАНИТЬ ВАШЕ ВРЕМЯ - НАША ГЛАВНАЯ ЗАДАЧА.</div>
+
+      Как это работает?
+
+      ODYSSEUS предоставляет вам уникальные инструменты для мониторинга вашей активности в социальных сетях. Мы анализируем ваше время, проведенное в сети, чтобы предоставить вам ценную обратную связь о том, как вы расходуете свои ресурсы. Наша система также способна ограничивать доступ к сайтам, которые могут отвлекать вас и замедлять ваш прогресс.
+
+      Полезные направления-
+
+      ODYSSEUS не только помогает вам контролировать нежелательные привычки, но и направляет вас на полезные ресурсы. Вы можете настроить перенаправление с одних сайтов на другие, обогащая свой опыт обучения, карьерного роста или личного развития.
+
+      Конфиденциальность и Безопасность
+
+      Мы ценим вашу конфиденциальность. Все данные обрабатываются анонимно, и вы имеете полный контроль над тем, какие данные вы хотите с нами делиться. Наша цель - помочь вам, не вмешиваясь в вашу личную жизнь.
+
+      Присоединитесь к ODYSSEUS и начните свой путь к эффективному управлению временем. Давайте вместе сэкономим каждую минуту на благо вашего личного и профессионального развития. Ваше время - ваш ресурс, и ODYSSEUS поможет вам использовать его наилучшим образом.</p>
+    </div>
+  </div>
+
+  <script src="http://127.0.0.1:3000/popup.js"></script>
+
+</body>
+</html>

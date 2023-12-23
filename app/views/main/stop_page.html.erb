@@ -1,5 +1,23 @@
-<h1>НЕГОДЯЙ</h1>
-<p><%= "Тебе точно нужно на сайт?" %></p>
-<div id = "label"></div>
-<div id = "stop_watch"></div>
-<div class="contacts-btn" onclick = "wait_a_second()">Да</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="stop-page.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <%= stylesheet_link_tag "stop_page.css" %>
+</head>
+<body>
+
+
+    <div class="cont">
+
+        <div class="cont-stop">Тебе точно нужно на данный сайт?</div>
+        <div class="cont-stop" id = "label-remaining">Оставшееся время: </div>
+        <div class="cont-stop" id = "stop-watch"></div>
+        <div class="cont-stop">    <button class="stop-btn" id = "stop-button" onclick="wait_a_second()">Да</button> </div>
+
+    </div>
+
+</body>
+</html>
